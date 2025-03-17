@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
 async function cargarUsuarios() {
     const response = await fetch("http://localhost:3000/usuarios");
     const usuarios = await response.json();
-    const usuariosLista = document.getElementById("usuarios-lista-container");
+	
+	console.log(usuarios)
+	
+    const usuariosLista = document.getElementById("usuarios-lista");
     
     let tableHTML = `<h2>Usuarios Registrados</h2>
                      <table>
