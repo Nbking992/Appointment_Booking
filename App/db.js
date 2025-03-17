@@ -11,6 +11,19 @@ const pool = new Pool({
   port: process.env.DB_PORT || 5432,
 });
 
-pool.query('SET search_path TO sistema_turnos');
+const setSchema = async () => {
+  const schema = process.env.DB_SCHEMA;
+  if (schema) {
+    try {
+      // Establecer el search_path en la base de datos para usar el esquema deseado
+      await pool.query('SET search_path TO $1', [schema]);
+      console.log(`Esquema configurado a: ${schema}`);
+    } catch (error) {
+      console.error("Error al configurar el esquema:", error);
+    }
+  } else {
+    console.log("No se ha definido un esquema en .env");
+  }
+};
 
 module.exports = pool;
