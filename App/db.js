@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-require('dotenv').config();
+require('dotenv').config();  // Si el archivo está en App/
 
 console.log("Conectando con el usuario:", process.env.DB_USER);
 
@@ -11,6 +11,6 @@ const pool = new Pool({
   port: process.env.DB_PORT || 5432,
 });
 
-//pool.query('SET search_path TO sistema_turnos');
+pool.query('SET search_path TO sistema_turnos');
 
 module.exports = pool;
