@@ -6,8 +6,6 @@ async function cargarUsuarios() {
     const response = await fetch("http://localhost:3000/usuarios");
     const usuarios = await response.json();
 	
-	console.log(usuarios)
-	
     const usuariosLista = document.getElementById("usuarios-lista");
     
     let tableHTML = `<h2>Usuarios Registrados</h2>
