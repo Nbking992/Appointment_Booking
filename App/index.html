@@ -1,31 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Peluquería</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Peluquería</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- ⚠️ NO pongas tu css después de Tailwind si no es necesario -->
+<!-- <link rel="stylesheet" href="css/styles.css" /> -->
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-white shadow-md p-4 flex justify-between items-center">
-        <img src="img/logo.png" alt="Logo Peluquería" class="h-12">
-        <nav>
-            <ul class="flex space-x-4">
-                <li><a href="index.html" class="text-gray-700 hover:text-blue-500">Inicio</a></li>
-                <li><a href="consulta.html" class="text-gray-700 hover:text-blue-500">Turnos</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="max-w-4xl mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center mb-6">Bienvenido a nuestra Peluquería</h1>
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <img src="https://source.unsplash.com/300x200/?haircut" alt="Peluquería 1" class="rounded-lg shadow">
-            <img src="https://source.unsplash.com/300x200/?barber" alt="Peluquería 2" class="rounded-lg shadow">
-            <img src="https://source.unsplash.com/300x200/?salon" alt="Peluquería 3" class="rounded-lg shadow">
-            <img src="https://source.unsplash.com/300x200/?hairstyle" alt="Peluquería 4" class="rounded-lg shadow">
-        </section>
-    </main>
-    <script src="scripts/home.js"></script>
+<body class="flex flex-col min-h-screen bg-gray-100 text-gray-900">
+	<header class="sticky bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-md p-4 fixed top-0 w-full z-20">
+	  <div class="max-w-7xl mx-auto flex justify-between items-center">
+		<div class="flex items-center space-x-2">
+			<span class="text-2xl">💈</span>
+			<span class="text-lg font-semibold">Peluquería</span>
+		</div>
+		<h1 class="text-xl font-bold hidden md:block" id="navbar-title">Bienvenido a nuestra Peluquería</h1>
+		<nav>
+		  <ul class="flex space-x-6 text-sm sm:text-base">
+			<li>
+			  <a href="index.html" class="flex items-center hover:text-gray-300 transition">
+				<i data-lucide="home" class="w-5 h-5 mr-1"></i> Inicio
+			  </a>
+			</li>
+			<li>
+			  <a href="consulta.html" class="flex items-center hover:text-gray-300 transition">
+				<i data-lucide="calendar-check" class="w-5 h-5 mr-1"></i> Turnos
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+	  </div>
+	</header>
+
+	<main class="flex-grow bg-gray-100 pb-0 mb-0">
+		<div class="relative w-full m-0 p-0 overflow-hidden">
+		  <img
+			id="carousel-image"
+			class="w-full h-[450px] object-cover rounded-lg shadow-md"
+			src="https://images.pexels.com/photos/3992878/pexels-photo-3992878.jpeg"
+			alt="Imagen de peluquería"
+		  />
+
+		  <!-- Botón izquierdo -->
+		  <button id="left-arrow"
+			class="absolute left-4 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-200 text-black rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
+			&#8592;
+		  </button>
+
+		  <!-- Botón derecho -->
+		  <button id="right-arrow"
+			class="absolute right-4 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-200 text-black rounded-full w-10 h-10 flex items-center justify-center shadow-md transition">
+			&#8594;
+		  </button>
+
+		  <!-- Puntos indicadores -->
+		  <div id="carousel-indicators"
+			class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2"></div>
+		</div>
+	</main>
+	
+	<footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-10 px-4">
+	  <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col sm:flex-row justify-between items-center text-sm">
+		<p class="mb-4 sm:mb-0">&copy; 2025 Peluquería. Todos los derechos reservados.</p>
+		<div class="flex space-x-6 items-center">
+		  <a href="https://facebook.com" target="_blank" class="hover:text-gray-300 transition flex items-center">
+			<i data-lucide="facebook" class="w-5 h-5 mr-1"></i> Facebook
+		  </a>
+		  <a href="https://instagram.com" target="_blank" class="hover:text-gray-300 transition flex items-center">
+			<i data-lucide="instagram" class="w-5 h-5 mr-1"></i> Instagram
+		  </a>
+		  <a href="mailto:contacto@peluqueria.com" class="hover:text-gray-300 transition flex items-center">
+			<i data-lucide="mail" class="w-5 h-5 mr-1"></i> Contacto
+		  </a>
+		</div>
+	  </div>
+	</footer>
+	
+  <script src="scripts/scripts.js"></script>
 </body>
 </html>

@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    cargarUsuarios();
-});
-
 async function cargarUsuarios() {
     const response = await fetch("http://localhost:3000/usuarios");
     const usuarios = await response.json();
@@ -73,3 +69,62 @@ async function modificarUsuario(telefono) {
         cargarUsuarios();
     }
 }
+
+// scripts/home.js
+
+const images = [
+  "https://images.pexels.com/photos/3992878/pexels-photo-3992878.jpeg",
+  "https://images.pexels.com/photos/3992879/pexels-photo-3992879.jpeg",
+  "https://images.pexels.com/photos/3992877/pexels-photo-3992877.jpeg",
+  "https://images.pexels.com/photos/3992880/pexels-photo-3992880.jpeg"
+];
+
+let currentIndex = 0;
+
+const carouselImage = document.getElementById("carousel-image");
+const leftArrow = document.getElementById("left-arrow");
+const rightArrow = document.getElementById("right-arrow");
+const indicatorsContainer = document.getElementById("carousel-indicators");
+
+function updateCarousel() {
+  carouselImage.src = images[currentIndex];
+  updateIndicators();
+}
+
+function updateIndicators() {
+  indicatorsContainer.innerHTML = "";
+  images.forEach((_, index) => {
+    const dot = document.createElement("div");
+    dot.className = `w-3 h-3 mx-1 rounded-full ${
+      index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+    }`;
+    indicatorsContainer.appendChild(dot);
+  });
+}
+
+leftArrow.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+rightArrow.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
+});
+
+updateCarousel();
+
+let lastScrollY = window.scrollY;
+const navbarTitle = document.getElementById("navbar-title");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > lastScrollY) {
+    navbarTitle.classList.add("opacity-0", "translate-y-[-20px]");
+  } else {
+    navbarTitle.classList.remove("opacity-0", "translate-y-[-20px]");
+  }
+  lastScrollY = window.scrollY;
+});
+
+lucide.createIcons();
+
